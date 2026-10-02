@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>警报器 PRO · 36音</title>
+<style>
+  :root{--bg:#0a0c11;--card:#151922;--line:#262c38;}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  body{background:var(--bg);color:#fff;font-family:"PingFang SC","Microsoft YaHei",sans-serif;touch-action:manipulation;overflow-x:hidden;}
+  #unlock{position:fixed;inset:0;z-index:999;background:#000;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;}
+  #unlock button{background:linear-gradient(135deg,#ff5e00,#ff0066);border:none;padding:20px 46px;color:#fff;font-size:22px;font-weight:700;border-radius:14px;box-shadow:0 0 28px #ff5e00aa;}
+  #unlock p{color:#888;font-size:13px;max-width:80%;text-align:center;line-height:1.6;}
+  header{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#0f1219;border-bottom:1px solid var(--line);}
+  header h1{font-size:20px;letter-spacing:2px;background:linear-gradient(90deg,#ff7a00,#ff3d77,#33aaff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .mute{font-size:13px;padding:7px 13px;border-radius:8px;background:#222833;color:#fff;border:1px solid var(--line);}
+  .wrap{padding:14px 14px 100px;}
+  .sec{margin-bottom:20px;}
+  .sec-t{font-size:14px;color:#9aa3b2;margin:0 0 9px 2px;border-left:4px solid #ff5e00;padding-left:8px;letter-spacing:1px;}
+  .grid{display:grid;gap:9px;}
+  .g2{grid-template-columns:1fr 1fr;}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  .btn{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 6px;text-align:center;cursor:pointer;user-select:none;transition:transform .06s;}
+  .btn:active,.btn.active{transform:scale(.95);}
+  .btn .n{font-size:16px;font-weight:700;display:block;margin-bottom:2px;}
+  .btn .d{font-size:10.5px;color:#7b8494;}
+  .o{border-color:#ff5e00;}.o .n{color:#ff8a3d;text-shadow:0 0 9px #ff5e00;}
+  .g{border-color:#00d35a;}.g .n{color:#36e07e;text-shadow:0 0 9px #00d35a;}
+  .b{border-color:#3a9bff;}.b .n{color:#5cb0ff;text-shadow:0 0 9px #3a9bff;}
+  .p{border-color:#b14bff;}.p .n{color:#c477ff;text-shadow:0 0 9px #b14bff;}
+  .y{border-color:#ffcc00;}.y .n{color:#ffdb4d;text-shadow:0 0 9px #ffcc00;}
+  .r{border-color:#ff3b5c;}.r .n{color:#ff6b85;text-shadow:0 0 9px #ff3b5c;}
+  .c{border-color:#22d3ee;}.c .n{color:#67e8f9;text-shadow:0 0 9px #22d3ee;}
+  .btn.active.o{box-shadow:0 0 18px #ff5e0088,inset 0 0 12px #ff5e0033;}
+  .btn.active.g{box-shadow:0 0 18px #00d35a88,inset 0 0 12px #00d35a33;}
+  .btn.active.b{box-shadow:0 0 18px #3a9bff88,inset 0 0 12px #3a9bff33;}
+  .btn.active.p{box-shadow:0 0 18px #b14bff88,inset 0 0 12px #b14bff33;}
+  .btn.active.y{box-shadow:0 0 18px #ffcc0088,inset 0 0 12px #ffcc0033;}
+  .btn.active.r{box-shadow:0 0 18px #ff3b5c88,inset 0 0 12px #ff3b5c33;}
+  .btn.active.c{box-shadow:0 0 18px #22d3ee88,inset 0 0 12px #22d3ee33;}
+</style>
+</head>
+<body>
+
+<div id="unlock">
+  <button>🔊 点击解锁声音引擎</button>
+  <p>首次进入点一下即可（手机系统限制）<br>iPhone 请把侧边静音键拨到响铃，安卓把媒体音量拉高</p>
+</div>
+
+<header>
+  <h1>警报器 PRO · 36音</h1>
+  <button class="mute" id="muteBtn">🔊 静音</button>
+</header>
+
+<div class="wrap">
+
+  <div class="sec"><div class="sec-t">号角 / 广播 / 手动电笛</div>
+    <div class="grid g3">
+      <div class="btn o" data-s="airhorn"><span class="n">气笛号角</span><span class="d">短促爆破</span></div>
+      <div class="btn g" data-s="broadcast"><span class="n">车外广播</span><span class="d">按住噪声</span></div>
+      <div class="btn y" data-s="high_horn"><span class="n">高音电笛</span><span class="d">长按爬升</span></div>
+      <div class="btn y" data-s="low_horn"><span class="n">低音电笛</span><span class="d">长按拖尾</span></div>
+      <div class="btn o" data-s="klaxon"><span class="n">船用汽笛</span><span class="d">低频轰鸣</span></div>
+      <div class="btn c" data-s="train"><span class="n">列车长鸣</span><span class="d">接近轰隆</span></div>
+    </div>
+  </div>
+
+  <div class="sec"><div class="sec-t">警车巡航 / 追击</div>
+    <div class="grid g4">
+      <div class="btn b" data-s="wail"><span class="n">Wail</span><span class="d">标准</span></div>
+      <div class="btn b" data-s="wail_slow"><span class="n">Wail慢</span><span class="d">沉稳</span></div>
+      <div class="btn b" data-s="wail_fast"><span class="n">Wail快</span><span class="d">急促</span></div>
+      <div class="btn b" data-s="yelp"><span class="n">Yelp</span><span class="d">啾啾啾</span></div>
+      <div class="btn b" data-s="chase"><span class="n">追击变频</span><span class="d">渐快</span></div>
+      <div class="btn b" data-s="pierce"><span class="n">极速穿透</span><span class="d">高频刺</span></div>
+      <div class="btn b" data-s="siren_classic"><span class="n">机械警笛</span><span class="d">老式旋转</span></div>
+      <div class="btn b" data-s="euro"><span class="n">欧洲双音</span><span class="d">哒哒双音</span></div>
+    </div>
+  </div>
+
+  <div class="sec"><div class="sec-t">特种 / 公共警报（新增一批）</div>
+    <div class="grid g4">
+      <div class="btn r" data-s="air_raid"><span class="n">防空警报</span><span class="d">长扫频</span></div>
+      <div class="btn r" data-s="nuke"><span class="n">核警报</span><span class="d">三长三短</span></div>
+      <div class="btn r" data-s="fire"><span class="n">消防双音</span><span class="d">欧-啊-欧</span></div>
+      <div class="btn r" data-s="tsunami"><span class="n">海啸广播</span><span class="d">断续长鸣</span></div>
+      <div class="btn r" data-s="amber"><span class="n">安珀警报</span><span class="d">手机紧急播报感</span></div>
+      <div class="btn r" data-s="factory"><span class="n">工厂下班铃</span><span class="d">刺耳电铃连击</span></div>
+      <div class="btn r" data-s="submarine"><span class="n">潜艇警笛</span><span class="d">潜航红色警报</span></div>
+      <div class="btn r" data-s="redalert"><span class="n">星舰红警</span><span class="d">影视红警循环</span></div>
+    </div>
+  </div>
+
+  <div class="sec"><div class="sec-t">影视 / 科幻 / 趣味（新增）</div>
+    <div class="grid g4">
+      <div class="btn p" data-s="ufo"><span class="n">UFO扫频</span><span class="d">飘移</span></div>
+      <div class="btn p" data-s="warp"><span class="n">曲速充能</span><span class="d">上扬轰鸣</span></div>
+      <div class="btn p" data-s="robot"><span class="n">机器人说话</span><span class="d">咔吱电子音</span></div>
+      <div class="btn p" data-s="phaser"><span class="n">激光枪</span><span class="d">啾——灭</span></div>
+      <div class="btn p" data-s="alarm_clock"><span class="n">闹钟狂响</span><span class="d">哔哔哔</span></div>
+      <div class="btn p" data-s="gameover"><span class="n">游戏结束</span><span class="d">下行像素音</span></div>
+      <div class="btn c" data-s="radar"><span class="n">雷达滴答</span><span class="d">军事雷达</span></div>
+      <div class="btn c" data-s="sonar"><span class="n">声呐回波</span><span class="d">滴…回…</span></div>
+    </div>
+  </div>
+
+  <div class="sec"><div class="sec-t">提示音 / 轮换</div>
+    <div class="grid g4">
+      <div class="btn g" data-s="hi_lo"><span class="n">救护Hi-Lo</span><span class="d">双音</span></div>
+      <div class="btn g" data-s="bell"><span class="n">校园电铃</span><span class="d">叮铃铃</span></div>
+      <div class="btn g" data-s="phone"><span class="n">电话铃</span><span class="d">老式振铃</span></div>
+      <div class="btn g" data-s="beep"><span class="n">短促爆音</span><span class="d">滴—</span></div>
+      <div class="btn g" data-s="tremolo"><span class="n">战术颤音</span><span class="d">高频抖</span></div>
+      <div class="btn g" data-s="msg"><span class="n">微信提示</span><span class="d">叮-咚</span></div>
+      <div class="btn g" data-s="error"><span class="n">系统报错</span><span class="d">噔噔-噔</span></div>
+      <div class="btn p" data-s="random"><span class="n">自动轮换</span><span class="d">随机全播</span></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let ctx, master, shaper;
+let muted=false;
+const live={};
+
+document.getElementById('unlock').onclick=function(){this.style.display='none';init();};
+function init(){
+  ctx=new (window.AudioContext||window.webkitAudioContext)();
+  master=ctx.createGain();master.gain.value=0.85;master.connect(ctx.destination);
+  shaper=ctx.createWaveShaper();
+  let c=new Float32Array(256);for(let i=0;i<256;i++){let x=i/128-1;c[i]=Math.tanh(x*1.4);}
+  shaper.curve=c;shaper.connect(master);
+  if(ctx.state==='suspended')ctx.resume();
+}
+document.getElementById('muteBtn').onclick=function(){muted=!muted;master.gain.value=muted?0:0.85;this.textContent=muted?'🔇 已静音':'🔊 静音';};
+
+function osc(t,f){let o=ctx.createOscillator();o.type=t;o.frequency.value=f;return o;}
+function gain(v){let g=ctx.createGain();g.gain.value=v;return g;}
+function voice(t,f){let o=osc(t,f),g=gain(0.5);o.connect(g);g.connect(shaper);o.start();return{o,g};}
+function noiseBuf(sec=2){let b=ctx.createBuffer(1,ctx.sampleRate*sec,ctx.sampleRate);let d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;return b;}
+
+function start(s){
+  if(!ctx)return; if(live[s])return;
+  let L={timers:[],stop:()=>{}}; const t=ctx.currentTime;
+  const fade=(g,o,sec=0.4)=>{g.gain.cancelScheduledValues(ctx.currentTime);g.gain.setValueAtTime(Math.max(0.001,g.gain.value),ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+sec);o.stop(ctx.currentTime+sec+0.05);};
+  const loop=(fn,ms)=>{fn();L.timers.push(setInterval(fn,ms));};
+
+  switch(s){
+    case 'airhorn':{let v=voice('square',1180),v2=voice('square',1196);v.g.gain.setValueAtTime(0,t);v.g.gain.linearRampToValueAtTime(0.7,t+0.04);v.g.gain.exponentialRampToValueAtTime(0.001,t+0.85);v2.g.gain.setValueAtTime(0,t);v2.g.gain.linearRampToValueAtTime(0.7,t+0.04);v2.g.gain.exponentialRampToValueAtTime(0.001,t+0.85);L.stop=()=>{v.o.stop(t+0.9);v2.o.stop(t+0.9);};setTimeout(L.stop,900);break;}
+
+    case 'broadcast':{let src=ctx.createBufferSource();src.buffer=noiseBuf();src.loop=true;let f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=900;let g=gain(0.32);src.connect(f);f.connect(g);g.connect(shaper);src.start();L.stop=()=>{g.gain.linearRampToValueAtTime(0,ctx.currentTime+0.2);src.stop(ctx.currentTime+0.25);};break;}
+
+    case 'high_horn':{let v=voice('sawtooth',420);v.o.frequency.exponentialRampToValueAtTime(1250,t+0.5);v.g.gain.setValueAtTime(0,t);v.g.gain.linearRampToValueAtTime(0.6,t+0.1);L.stop=()=>fade(v.g,v.o,0.45);break;}
+    case 'low_horn':{let v=voice('square',150);v.o.frequency.exponentialRampToValueAtTime(620,t+0.6);v.g.gain.setValueAtTime(0,t);v.g.gain.linearRampToValueAtTime(0.7,t+0.1);L.stop=()=>fade(v.g,v.o,0.65);break;}
+    case 'klaxon':{let v=voice('square',180),lfo=osc('sine',6),lg=gain(40);lfo.connect(lg);lg.connect(v.o.frequency);lfo.start();v.g.gain.setValueAtTime(0,t);v.g.gain.linearRampToValueAtTime(0.6,t+0.2);L.stop=()=>{fade(v.g,v.o,0.5);lfo.stop(ctx.currentTime+0.55);};break;}
+    case 'train':{let v=voice('sawtooth',220),v2=voice('sawtooth',224);v.g.gain.setValueAtTime(0,t);v.g.gain.linearRampToValueAtTime(0.6,t+0.3);v2.g.gain.setValueAtTime(0,t);v2.g.gain.linearRampToValueAtTime(0.6,t+0.3);L.stop=()=>{fade(v.g,v.o,0.9);fade(v2.g,v2.o,0.9);};break;}
+
+    case 'wail':case 'wail_slow':case 'wail_fast':{let sp=s==='wail_slow'?1.1:s==='wail_fast'?0.55:0.8;let v=voice('sine',600);loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(580,n);v.o.frequency.linearRampToValueAtTime(1150,n+sp*0.5);v.o.frequency.linearRampToValueAtTime(580,n+sp);},sp*1000);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.15);};break;}
+    case 'yelp':{let v=voice('square',800);loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(720,n);v.o.frequency.linearRampToValueAtTime(1350,n+0.14);v.o.frequency.linearRampToValueAtTime(720,n+0.28);},290);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.12);};break;}
+    case 'chase':{let v=voice('sawtooth',700);let sp=0.5;loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(650,n);v.o.frequency.linearRampToValueAtTime(1300,n+sp*0.5);v.o.frequency.linearRampToValueAtTime(650,n+sp);sp=Math.max(0.22,sp-0.03);},sp*1000+50);L.stop=()=>{L.timers.forEach(clearInterval);fade(v.g,v.o,0.12);};break;}
+    case 'pierce':{let v=voice('square',1500);loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(1400,n);v.o.frequency.linearRampToValueAtTime(2200,n+0.1);v.o.frequency.linearRampToValueAtTime(1400,n+0.2);},220);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.1);};break;}
+    case 'siren_classic':{let v=voice('sawtooth',700),lfo=osc('sine',3.5),lg=gain(300);lfo.connect(lg);lg.connect(v.o.frequency);lfo.start();v.g.gain.setValueAtTime(0,t);v.g.gain.linearRampToValueAtTime(0.55,t+0.15);L.stop=()=>{fade(v.g,v.o,0.3);lfo.stop(ctx.currentTime+0.35);};break;}
+    case 'euro':{let v=voice('square',660);loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(660,n);v.o.frequency.setValueAtTime(880,n+0.25);},500);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.12);};break;}
+
+    // 特种警报
+    case 'air_raid':{let v=voice('sawtooth',440);v.o.frequency.exponentialRampToValueAtTime(1400,t+1.2);v.o.frequency.exponentialRampToValueAtTime(440,t+2.4);v.g.gain.setValueAtTime(0,t);v.g.gain.linearRampToValueAtTime(0.7,t+0.2);L.stop=()=>fade(v.g,v.o,0.8);break;}
+    case 'nuke':{let v=voice('square',1000);let pat=[0.4,0.4,0.4,0.12,0.12,0.12],i=0;loop(()=>{let n=ctx.currentTime;v.g.gain.cancelScheduledValues(n);v.g.gain.setValueAtTime(0.6,n);v.g.gain.setValueAtTime(0,n+pat[i]);i=(i+1)%pat.length;},500);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.1);};break;}
+    case 'fire':{let v=voice('sawtooth',600);loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(600,n);v.o.frequency.setValueAtTime(800,n+0.5);},1000);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.15);};break;}
+    case 'tsunami':{let v=voice('sawtooth',520);loop(()=>{let n=ctx.currentTime;v.g.gain.setValueAtTime(0.6,n);v.g.gain.setValueAtTime(0,n+0.3);v.o.frequency.setValueAtTime(500,n);v.o.frequency.linearRampToValueAtTime(900,n+0.3);},700);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.15);};break;}
+    case 'amber':{let v=voice('square',1046),v2=voice('square',1318);loop(()=>{let n=ctx.currentTime;v.g.gain.setValueAtTime(0.4,n);v.g.gain.setValueAtTime(0,n+0.18);v2.g.gain.setValueAtTime(0.4,n+0.2);v2.g.gain.setValueAtTime(0,n+0.38);},900);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.1);fade(v2.g,v2.o,0.1);};break;}
+    case 'factory':{let v=voice('square',2200);loop(()=>{let n=ctx.currentTime;v.g.gain.setValueAtTime(0.35,n);v.g.gain.exponentialRampToValueAtTime(0.05,n+0.18);},220);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.15);};break;}
+    case 'submarine':{let v=voice('sawtooth',330),lfo=osc('square',2),lg=gain(60);lfo.connect(lg);lg.connect(v.o.frequency);lfo.start();v.g.gain.setValueAtTime(0,t);v.g.gain.linearRampToValueAtTime(0.6,t+0.2);L.stop=()=>{fade(v.g,v.o,0.4);lfo.stop(ctx.currentTime+0.45);};break;}
+    case 'redalert':{let v=voice('sawtooth',440);loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(440,n);v.o.frequency.linearRampToValueAtTime(660,n+0.5);v.o.frequency.linearRampToValueAtTime(440,n+1.0);},1000);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.2);};break;}
+
+    // 影视科幻
+    case 'ufo':{let v=voice('sine',300);loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(300,n);v.o.frequency.exponentialRampToValueAtTime(1800,n+0.6);v.o.frequency.exponentialRampToValueAtTime(250,n+1.2);},1200);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.3);};break;}
+    case 'warp':{let v=voice('sawtooth',200);v.o.frequency.exponentialRampToValueAtTime(2400,t+1.8);v.g.gain.setValueAtTime(0,t);v.g.gain.linearRampToValueAtTime(0.6,t+0.3);L.stop=()=>fade(v.g,v.o,0.6);break;}
+    case 'robot':{let v=voice('square',400),lfo=osc('square',14),lg=gain(200);lfo.connect(lg);lg.connect(v.o.frequency);lfo.start();let src=ctx.createBufferSource();src.buffer=noiseBuf(0.5);let nf=ctx.createBiquadFilter();nf.type='bandpass';nf.frequency.value=2000;let ng=gain(0.08);src.connect(nf);nf.connect(ng);ng.connect(shaper);src.start();v.g.gain.setValueAtTime(0.4,t);L.stop=()=>{fade(v.g,v.o,0.2);lfo.stop(ctx.currentTime+0.25);ng.gain.linearRampToValueAtTime(0,ctx.currentTime+0.2);src.stop(ctx.currentTime+0.25);};break;}
+    case 'phaser':{let v=voice('sawtooth',1800);v.o.frequency.exponentialRampToValueAtTime(120,t+0.5);v.g.gain.setValueAtTime(0.5,t);v.g.gain.exponentialRampToValueAtTime(0.001,t+0.55);L.stop=()=>v.o.stop(t+0.6);setTimeout(L.stop,560);break;}
+    case 'alarm_clock':{let v=voice('square',1200);loop(()=>{let n=ctx.currentTime;v.g.gain.setValueAtTime(0.4,n);v.g.gain.setValueAtTime(0,n+0.08);v.g.gain.setValueAtTime(0.4,n+0.16);v.g.gain.setValueAtTime(0,n+0.24);},500);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.1);};break;}
+    case 'gameover':{let v=voice('square',660);let seq=[660,550,440,330];let i=0;loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(seq[i],n);i=(i+1)%seq.length;},180);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.15);};break;}
+    case 'radar':{let v=voice('sine',1400);loop(()=>{let n=ctx.currentTime;v.g.gain.setValueAtTime(0.35,n);v.g.gain.exponentialRampToValueAtTime(0.02,n+0.08);},600);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.1);};break;}
+    case 'sonar':{let v=voice('sine',1200);loop(()=>{let n=ctx.currentTime;v.g.gain.setValueAtTime(0.4,n);v.g.gain.exponentialRampToValueAtTime(0.02,n+0.1);v.o.frequency.setValueAtTime(1200,n);v.o.frequency.exponentialRampToValueAtTime(900,n+0.4);},1000);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.15);};break;}
+
+    // 提示音
+    case 'hi_lo':{let v=voice('sine',620);loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(620,n);v.o.frequency.setValueAtTime(940,n+0.5);},1000);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.12);};break;}
+    case 'bell':{let v=voice('triangle',1040),v2=voice('triangle',1560);loop(()=>{let n=ctx.currentTime;v.g.gain.setValueAtTime(0.4,n);v.g.gain.exponentialRampToValueAtTime(0.05,n+0.25);},500);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.2);fade(v2.g,v2.o,0.2);};break;}
+    case 'phone':{let v=voice('sine',440),v2=voice('sine',480);loop(()=>{let n=ctx.currentTime;v.g.gain.setValueAtTime(0.4,n);v.g.gain.setValueAtTime(0,n+0.4);v2.g.gain.setValueAtTime(0.4,n);v2.g.gain.setValueAtTime(0,n+0.4);},1000);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.1);fade(v2.g,v2.o,0.1);};break;}
+    case 'beep':{let v=voice('square',1000);v.g.gain.setValueAtTime(0.5,t);v.g.gain.exponentialRampToValueAtTime(0.001,t+0.25);L.stop=()=>v.o.stop(t+0.3);setTimeout(L.stop,260);break;}
+    case 'tremolo':{let v=voice('square',1100),lfo=osc('sine',18),lg=gain(0.4);lfo.connect(lg);lg.connect(v.g.gain);lfo.start();L.stop=()=>{fade(v.g,v.o,0.1);lfo.stop(ctx.currentTime+0.15);};break;}
+    case 'msg':{let v=voice('sine',1320),v2=voice('sine',990);v.g.gain.setValueAtTime(0.4,t);v2.g.gain.setValueAtTime(0,t);v2.g.gain.setValueAtTime(0.4,t+0.12);v2.g.gain.setValueAtTime(0,t+0.3);L.stop=()=>{v.o.stop(t+0.4);v2.o.stop(t+0.4);};setTimeout(L.stop,420);break;}
+    case 'error':{let v=voice('square',880);let seq=[880,880,1100];let i=0;loop(()=>{let n=ctx.currentTime;v.o.frequency.setValueAtTime(seq[i],n);i=(i+1)%seq.length;},140);setTimeout(()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.1);},460);L.stop=()=>{clearInterval(L.timers[0]);fade(v.g,v.o,0.1);};break;}
+
+    case 'random':{let pool=['wail','yelp','fire','euro','air_raid','redalert','hi_lo','ufo'];let cur=null;let tick=()=>{if(cur)stop(cur);cur=pool[Math.floor(Math.random()*pool.length)];start(cur);};tick();L.timers.push(setInterval(tick,2400));L.stop=()=>{clearInterval(L.timers[0]);if(cur)stop(cur);};break;}
+
+    default:{let v=voice('sawtooth',800);L.stop=()=>fade(v.g,v.o,0.1);}
+  }
+  live[s]=L;
+}
+function stop(s){if(live[s]){try{live[s].stop();}catch(e){}delete live[s];}}
+
+document.querySelectorAll('.btn').forEach(b=>{
+  const id=b.dataset.s;
+  const down=e=>{if(e.cancelable)e.preventDefault();b.classList.add('active');if(!ctx)init();if(ctx.state==='suspended')ctx.resume();start(id);};
+  const up=e=>{if(e.cancelable)e.preventDefault();b.classList.remove('active');stop(id);};
+  b.addEventListener('touchstart',down,{passive:false});
+  b.addEventListener('touchend',up,{passive:false});
+  b.addEventListener('touchcancel',up,{passive:false});
+  b.addEventListener('mousedown',down);
+  b.addEventListener('mouseup',up);
+  b.addEventListener('mouseleave',up);
+});
+</script>
+</body>
+</html>
